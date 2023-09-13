@@ -1,0 +1,87 @@
+version: 2
+
+sources:
+  - name: production
+    schema: fake_product_company_sources
+    tables:
+      - name: companies_base
+        description: Fake companies daily snapshot
+        columns:
+          - name: id
+            data_type: INT64
+            description: ''
+          - name: name
+            data_type: STRING
+            description: ''
+          - name: slogan
+            data_type: STRING
+            description: ''
+          - name: purpose
+            data_type: STRING
+            description: ''
+          - name: date_added
+            data_type: DATE
+            description: ''
+      - name: employees_base
+        description: Fake employees daily snapshot
+        columns:
+          - name: id
+            data_type: INT64
+            description: ''
+          - name: first_name
+            data_type: STRING
+            description: ''
+          - name: last_name
+            data_type: STRING
+            description: ''
+          - name: gender
+            data_type: STRING
+            description: ''
+          - name: email
+            data_type: STRING
+            description: ''
+          - name: age
+            data_type: INT64
+            description: ''
+          - name: username
+            data_type: STRING
+            description: ''
+          - name: date_added
+            data_type: DATE
+            description: ''
+          - name: company_id
+            data_type: INT64
+            description: ''
+      - name: products_base
+        description: Fake products we sell to companies
+        columns:
+          - name: id
+            data_type: INT64
+            description: ''
+          - name: category
+            data_type: STRING
+            description: ''
+          - name: name
+            data_type: STRING
+            description: ''
+          - name: price
+            data_type: FLOAT64
+            description: ''
+          - name: date_added
+            data_type: DATE
+            description: ''
+      - name: enterprise_orders_base
+        description: Fake orders sold to companies
+        columns:
+          - name: date
+            data_type: DATE
+            description: ''
+          - name: employee_id
+            data_type: INT64
+            description: ''
+          - name: product_id
+            data_type: INT64
+            description: ''
+          - name: num_items
+            data_type: INT64
+            description: ''

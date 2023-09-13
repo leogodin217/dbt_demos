@@ -1,0 +1,20 @@
+version: 2
+models:
+  - name: stg_companies
+    description: Set of companies that represent accounts
+    columns:
+      - name: account_id
+        description: 'ID of the account'
+        data_type: INT64
+      - name: company_name
+        description: 'Hopefully-funny name of the company'
+        data_type: STRING
+      - name: company_slogan
+        description: 'Hopefully-funny slogan of the company'
+        data_type: STRING
+      - name: company_mission
+        description: 'Hopefully-funny mission statement of the company'
+        data_type: STRING
+      - name: date_added
+        description: 'Date this record was added (Often faked)'
+        data_type: DATE

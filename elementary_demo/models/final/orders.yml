@@ -1,0 +1,23 @@
+version: 2
+models:
+  - name: orders
+    columns:
+      - name: order_date
+        description: ''
+        data_type: DATE
+      - name: user_id
+        description: 'ID of the order user'
+        data_type: INT64
+      - name: product_id
+        description: 'ID of the product ordered'
+        data_type: INT64
+      - name: num_items
+        description: 'Num products ordered'
+        data_type: INT64
+      - name: created_at
+        description: ''
+        data_type: DATE
+      - name: updated_at
+        description: ''
+        data_type: DATE
+sources: []

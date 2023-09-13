@@ -1,0 +1,29 @@
+version: 2
+models:
+  - name: stg_users
+    description: Users underneath accounts
+    columns:
+      - name: user_id
+        description: 'ID of the user'
+        data_type: INT64
+      - name: account_id
+        description: 'ID of the account the user is under'
+        data_type: INT64
+      - name: first_name
+        description: 'First name of the user'
+        data_type: STRING
+      - name: last_name
+        description: 'Last name of the user'
+        data_type: STRING
+      - name: email
+        description: 'Email of the user'
+        data_type: STRING
+      - name: age
+        description: 'Age of the user'
+        data_type: INT64
+      - name: username
+        description: 'Username of the user'
+        data_type: STRING
+      - name: date_added
+        description: 'Date the user was added (Often faked)'
+        data_type: DATE

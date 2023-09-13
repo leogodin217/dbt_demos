@@ -1,0 +1,23 @@
+version: 2
+models:
+  - name: products
+    columns:
+      - name: product_id
+        description: 'ID of the product'
+        data_type: INT64
+      - name: category
+        description: 'Category of the product'
+        data_type: STRING
+      - name: name
+        description: 'Name of the product (Often does not match the category)'
+        data_type: STRING
+      - name: price
+        description: 'Price of the product'
+        data_type: FLOAT64
+      - name: created_at
+        description: ''
+        data_type: DATE
+      - name: updated_at
+        description: ''
+        data_type: DATE
+sources: []

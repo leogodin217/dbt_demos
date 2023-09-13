@@ -1,0 +1,21 @@
+version: 2
+
+models: 
+  - name: accounts 
+    description: Append-only dimension of companies signed up to order our products 
+    columns:
+      - name: account_id 
+        description: Internal ID of the company 
+      - name: company_name 
+        description: Legal name of the company 
+      - name: company_slogan 
+        description: Slogan of the company 
+      - name: company_mission 
+        description: Mission statement of the company 
+      - name: created_at 
+        description: Timestamp the record was inserted 
+      - name: updated_at
+        description: Timestamp the record was updated 
+      
+
+

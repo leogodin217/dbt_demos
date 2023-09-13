@@ -1,0 +1,18 @@
+version: 2
+models:
+  - name: stg_orders
+    description: Orders made by users
+    columns:
+      - name: date
+        description: 'Date the order was placed'
+        data_type: DATE
+      - name: user_id
+        description: 'ID of the order user'
+        data_type: INT64
+      - name: product_id
+        description: 'ID of the product ordered'
+        data_type: INT64
+      - name: num_items
+        description: 'Num products ordered'
+        data_type: INT64
+sources: []
