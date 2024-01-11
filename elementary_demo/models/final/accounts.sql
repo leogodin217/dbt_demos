@@ -8,15 +8,15 @@
     )
 }}
 
-{% set execution_date = get_execution_date() %}
+{% set run_at_date = get_run_at_date() %}
 
 select 
     account_id,
     company_name,
     company_slogan,
     company_mission,
-    {{ execution_date }} as created_at,
-    {{ execution_date }} as updated_at
+    {{ run_at_date }} as created_at,
+    {{ run_at_date }} as updated_at
      
 from {{ ref('stg_companies') }} 
-where date_added = {{ execution_date }} 
+where date_added = {{ run_at_date }} 

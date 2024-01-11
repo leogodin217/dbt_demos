@@ -5,28 +5,46 @@ models:
       - name: user_id
         description: 'ID of the user'
         data_type: INT64
+        tests:
+          - unique 
+          - not_null
       - name: account_id
         description: 'ID of the account the user is under'
         data_type: INT64
+        tests:
+          - not_null
       - name: first_name
         description: 'First name of the user'
         data_type: STRING
+        tests:
+          - not_null
       - name: last_name
         description: 'Last name of the user'
         data_type: STRING
+        tests:
+          - not_null
       - name: email
         description: 'Email of the user'
         data_type: STRING
+        tests:
+          - not_null
       - name: age
         description: 'Age of the user'
         data_type: INT64
+        tests:
+          - not_null
       - name: username
         description: 'Username of the user'
         data_type: STRING
+        tests:
+          - not_null
       - name: created_at
         description: ''
         data_type: DATE
+        tests:
+          - not_null
       - name: updated_at
         description: ''
         data_type: DATE
-sources: []
+        tests:
+          - not_null

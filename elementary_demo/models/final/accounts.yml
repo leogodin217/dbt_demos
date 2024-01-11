@@ -3,11 +3,24 @@ version: 2
 models: 
   - name: accounts 
     description: Append-only dimension of companies signed up to order our products 
+    config:
+      tags: ['accounts-team']
     columns:
       - name: account_id 
         description: Internal ID of the company 
+        tests: 
+          - duplicate_accounts: 
+              name: Duplicate Accounts Found
+              config:
+                meta:
+                  description: Duplicate accounts were found
+                  owner: '@Leo Godin'
+                  tags: ['accounts-team']
+          - not_null
       - name: company_name 
         description: Legal name of the company 
+        tests:
+          - not_null
       - name: company_slogan 
         description: Slogan of the company 
       - name: company_mission 

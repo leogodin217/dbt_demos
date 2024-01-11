@@ -37,4 +37,17 @@ models:
       +materialized: view
     final:
       +materialized: view
+    sandbox:
+      +materialized: view
+    validation:
+      +materialized: view
+      +enabled: "{{ var('run_validation', False) }}"
+  elementary:
+    ## elementary models will be created in the schema '<your_schema>_elementary'
+    +schema: "elementary"
+    ## To disable elementary for dev, uncomment this:
+    # enabled: "{{ target.name in ['prod','analytics'] }}"
+
+tests:
+  +severity: warn
 

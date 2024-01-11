@@ -8,7 +8,7 @@
     )
 }}
 
-{% set execution_date = get_execution_date() %}
+{% set run_at_date = get_run_at_date() %}
 
 select 
     user_id,
@@ -18,8 +18,8 @@ select
     email,
     age,
     username,
-    {{ execution_date }} as created_at,
-    {{ execution_date }} as updated_at
+    {{ run_at_date }} as created_at,
+    {{ run_at_date }} as updated_at
      
 from {{ ref('stg_users') }} as accounts 
-where date_added = {{ execution_date }}
+where date_added = {{ run_at_date }}

@@ -8,15 +8,15 @@
     )
 }}
 
-{% set execution_date = get_execution_date() %}
+{% set run_at_date = get_run_at_date() %}
 
 select 
     date as order_date,
     user_id,
     product_id,
     num_items,
-    {{ execution_date }} as created_at,
-    {{ execution_date }} as updated_at
+    {{ run_at_date }} as created_at,
+    {{ run_at_date }} as updated_at
      
 from {{ ref('stg_orders') }} as orders 
-where date = {{ execution_date }}
+where date = {{ run_at_date }}
