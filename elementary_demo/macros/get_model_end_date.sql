@@ -1,4 +1,4 @@
-{% macro get_end_date(execution_date, date_logic='execution_day') %}
+{% macro get_model_end_date(execution_date, date_logic='execution_day') %}
 
 
     {# This is like a Python import statement. Makes calling these functions shorter. #}
@@ -11,8 +11,8 @@
         {% set end_date = execution_date %}
 
     {% elif date_logic == 'run_at_week' %}
-        {# ISO week ends on Sunday, you can use days=5 - execution_date.weekday() to end on Saturday #}
-        {% set end_date = execution_date + timedelta(days = 6 - execution_date.weekday()) %}
+        {# Our week ends on Saturday, but ISO week ends on Sunday, you can use days=6 - execution_date.weekday() to end on Sunday #}
+        {% set end_date = execution_date + timedelta(days = 5 - execution_date.weekday()) %}
 
     {% elif date_logic == 'run_at_month' %}
         {# Thanks to https://pynative.com/python-get-last-day-of-month/ #}
@@ -24,6 +24,6 @@
         {{ exceptions.raise_compiler_error('get_model_end_date: Invalid date logic: ' + date_logic) }}
     {% endif %}
 
-    {% set model_end_date  = "'" + end_date.strftime('%Y-%m-%d') + "'" %}
+    {% set model_end_date  = end_date.strftime('%Y-%m-%d') %}
     {% do return(model_end_date) %}
 {% endmacro %}

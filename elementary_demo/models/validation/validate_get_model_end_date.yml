@@ -1,8 +1,8 @@
 version: 2
 
 models:
-  - name: validate_get_model_start_date
-    description: Validates the get_model_start_date macro 
+  - name: validate_get_model_end_date
+    description: Validates the get_model_end_date macro 
     config:
       meta:
         # Used in the custom expression_is_true test I use.
@@ -17,34 +17,34 @@ models:
     tests:
       - expression_is_true:
           # Captures all test cases in case we miss one here
-          name: Validate get_model_start_date all test cases 
+          name: Validate get_model_end_date all test cases 
           expression: expected_date = actual_date
       - expression_is_true:
-          name: Validate get_model_start_date run_at_day 
+          name: Validate get_model_end_date run_at_day 
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_day' 
       - expression_is_true:
-          name: Validate get_model_start_date run_at_week start
+          name: Validate get_model_end_date run_at_week start
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_week_start' 
       - expression_is_true:
-          name: Validate get_model_start_date run_at_week middle 
+          name: Validate get_model_end_date run_at_week middle 
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_week_middle' 
       - expression_is_true:
-          name: Validate get_model_start_date run_at_week end 
+          name: Validate get_model_end_date run_at_week end 
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_week_end' 
       - expression_is_true:
-          name: Validate get_model_start_date run_at_month start 
+          name: Validate get_model_end_date run_at_month start 
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_month_start' 
       - expression_is_true:
-          name: Validate get_model_start_date run_at_month middle 
+          name: Validate get_model_end_date run_at_month middle 
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_month_middle' 
       - expression_is_true:
-          name: Validate get_model_start_date run_at_month end 
+          name: Validate get_model_end_date run_at_month end 
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_month_end' 
             

@@ -1,5 +1,5 @@
 {# Generates a string to be be used in date logic #}
-{% macro get_run_at_date() %}
+{% macro get_run_at_date_sql() %}
 
     {% if not execute %}{{return('')}}{% endif %}
 

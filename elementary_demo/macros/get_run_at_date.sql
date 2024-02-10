@@ -1,7 +1,7 @@
 {# 
     Generates a python date object from the passed in variable run_at_date or defaults to the current date - 1 day.
  #}
-{% macro get_run_at_date_python() %}
+{% macro get_run_at_date() %}
     {% set run_at_date_input = var('run_at_date', False) %}
 
     {% if run_at_date_input %}

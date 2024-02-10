@@ -1,28 +1,44 @@
 version: 2
 models:
-  - name: stg_orders
+  - name: orders
     config:
       meta:
         owner: Sales
         model_meta:
           uniqueness:
-            - date
+            - order_date
             - user_id
             - product_id
           date_logic: run_at_day 
-          date_column: date
-    description: Orders made by users
+          date_column: order_date
     columns:
-      - name: date
-        description: 'Date the order was placed'
+      - name: order_date
+        description: ''
         data_type: DATE
+        tests:
+          - not_null
       - name: user_id
         description: 'ID of the order user'
         data_type: INT64
+        tests:
+          - not_null
       - name: product_id
         description: 'ID of the product ordered'
         data_type: INT64
+        tests:
+          - not_null
       - name: num_items
         description: 'Num products ordered'
         data_type: INT64
-sources: []
+        tests:
+          - not_null
+      - name: created_at
+        description: ''
+        data_type: DATE
+        tests:
+          - not_null
+      - name: updated_at
+        description: ''
+        data_type: DATE
+        tests:
+          - not_null

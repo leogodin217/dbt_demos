@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: orders
+  - name: orders2
     config:
       meta:
         owner: Sales
@@ -9,8 +9,8 @@ models:
             - order_date
             - user_id
             - product_id
-          date_column: order_date
           date_logic: run_at_day 
+          date_column: order_date
     columns:
       - name: order_date
         description: ''

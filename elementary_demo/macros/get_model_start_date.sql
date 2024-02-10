@@ -3,9 +3,8 @@
     {# This is like a Python import statement. Makes calling these functions shorter. #}
     {% set date = modules.datetime.date %}
     {% set timedelta = modules.datetime.timedelta %}
-
+    {{ log(date_logic, info=true)}}
     {# Define any date logics used by your company  #}
-
     {% if date_logic == 'run_at_day' %}
         {% set start_date = run_at_date %}
 
@@ -19,9 +18,10 @@
         {% set start_date = date(run_at_date.year, run_at_date.month, 1) %}
 
     {% else %}
+        {{ log(date_logic, info=true) }}
         {{ exceptions.raise_compiler_error('get_start_dates: Invalid date logic: ' + date_logic) }}
     {% endif %}
 
-    {% set model_start_date  = "'" + start_date.strftime('%Y-%m-%d') + "'" %}
+    {% set model_start_date  = start_date.strftime('%Y-%m-%d') %}
     {% do return(model_start_date) %}
 {% endmacro %}
