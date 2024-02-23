@@ -13,7 +13,7 @@ models:
             - expected_date
             - actual_date
           date_column: expected_date # Not used but required by some macros
-          date_logic: run_at_day  # Not used but required by some macros
+          date_logic: all # Do not apply a date filter 
     tests:
       - expression_is_true:
           # Captures all test cases in case we miss one here

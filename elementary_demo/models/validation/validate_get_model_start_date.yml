@@ -13,7 +13,7 @@ models:
             - expected_date
             - actual_date
           date_column: expected_date # Not used but required by some macros
-          date_logic: run_at_day  # Not used but required by some macros
+          date_logic: all # Do not apply a date filter
     tests:
       - expression_is_true:
           # Captures all test cases in case we miss one here
@@ -35,6 +35,10 @@ models:
           name: Validate get_model_start_date run_at_week end 
           expression: expected_date = actual_date 
           where_clause: test_case = 'run_at_week_end' 
+      - expression_is_true:
+          name: Validate get_model_start_date run_at_iso_week start 
+          expression: expected_date = actual_date 
+          where_clause: test_case = 'run_at_iso_week_start' 
       - expression_is_true:
           name: Validate get_model_start_date run_at_month start 
           expression: expected_date = actual_date 

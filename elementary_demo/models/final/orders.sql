@@ -1,6 +1,6 @@
 
 {# No unique key means the table will simply append whatever the query produces #}
-{# This allows us to easily create duplicates from the command line #}
+{# This allows us to easily create duplicates from the command line for testing #}
 
 {{
   config(

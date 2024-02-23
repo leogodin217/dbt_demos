@@ -1,6 +1,6 @@
 version: 2
 models:
-  - name: orders2
+  - name: weekly_orders 
     config:
       meta:
         owner: Sales
@@ -9,8 +9,11 @@ models:
             - order_date
             - user_id
             - product_id
-          date_logic: run_at_day 
+          date_logic: run_at_week 
           date_column: order_date
+    tests: 
+      - expression_is_true: 
+          expression: total_weekly_items >= num_items
     columns:
       - name: order_date
         description: ''
@@ -32,6 +35,9 @@ models:
         data_type: INT64
         tests:
           - not_null
+      - name: total_weekly_items
+        description: Count of total items in the week
+        data_type: INT64
       - name: created_at
         description: ''
         data_type: DATE

@@ -16,7 +16,7 @@ select
     'run_at_week_start' as test_case,
     '2023-12-17' as run_at_date,
     '2023-12-23' as expected_date,
-    '{{ get_model_end_date(python_date('2023-12-18'), date_logic='run_at_week') }}' as actual_date 
+    '{{ get_model_end_date(python_date('2023-12-17'), date_logic='run_at_week') }}' as actual_date 
 
 union all 
 

@@ -1,33 +1,22 @@
 {% test expression_is_true(model, expression, where_clause) %}
 
     {% if not execute %} {{ return('') }} {% endif %}
-    {% set meta = get_model_meta(model.name) %} 
-    {{ log(meta, info=true)}}
-    {% set columns = meta['uniqueness'] %} 
-    {% set date_column = meta['date_column'] %}
-    {% set date_logic = meta['date_logic'] %}
 
-    {# Get the start and end dates used to query the source model #}
-    {% set run_at_date = get_run_at_date() %} 
-    {% set start_date = get_model_start_date(run_at_date, date_logic) %}
-    {% set end_date = get_model_end_date(run_at_date, date_logic) %} 
+    {# 1. Get uniqueness columns from the model's meta #}
+    {% set meta = get_resource_meta(model.name) %}
+    {% set model_meta = meta['model_meta'] %}
+    {% set uniqueness_columns = model_meta['uniqueness'] %} 
 
-    {# If set to true, we will not filter on dates #}
-    {% set test_full_table = var('test_full_table', false) %}
-
-select 
-    {{ columns | join(', ')}} 
-{# Using this instead of dbt's config.where so we can get the table name #}
-from (
-    select * from {{ model }}
-    where 1 = 1
+    {# 2. Selecting uniqueness columns allows us to identify failed rows #}
+    {# We can add other columns as needed for a specific test. #}
+    select 
+        {{ uniqueness_columns | join(', ') }} 
+    {# 3. Use a macro to automatically filter on dates #}
+    from {{ get_date_filtered_test_subquery(model, get_run_at_date()) }}
+    where not ({{ expression }})
+    {# 4. Add the configured where clause if one exists #}
     {% if where_clause %}
         and  ({{ where_clause }})
     {% endif %}
-    {% if not test_full_table %}
-        and ({{date_column }} between '{{ start_date }}' and '{{ end_date }}')
-    {% endif %}  
-) as subquery
-where not ({{ expression }})
 
 {% endtest %}

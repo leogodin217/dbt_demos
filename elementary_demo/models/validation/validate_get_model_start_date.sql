@@ -16,9 +16,9 @@ select
     'run_at_week_start' as test_case,
     '2023-12-17' as run_at_date,
     '2023-12-17' as expected_date,
-    '{{ get_model_start_date(python_date('2023-12-18'), date_logic='run_at_week') }}' as actual_date 
+    '{{ get_model_start_date(python_date('2023-12-17'), date_logic='run_at_week') }}' as actual_date 
 
-union all 
+union all  
 
 select 
     'run_at_week_middle' as test_case,
@@ -33,6 +33,15 @@ select
     '2023-12-23' as run_at_date,
     '2023-12-17' as expected_date,
     '{{ get_model_start_date(python_date('2023-12-23'), date_logic='run_at_week') }}' as actual_date 
+
+union all 
+
+-- run_at_iso_week: Get the Monday that begins our work week using iso week start and end 
+select 
+    'run_at_iso_week_start' as test_case,
+    '2023-12-18' as run_at_date,
+    '2023-12-17' as expected_date,
+    '{{ get_model_start_date(python_date('2023-12-18'), date_logic='run_at_week') }}' as actual_date 
 
 union all 
 -- run_at_month: Should always return the first day of the month
