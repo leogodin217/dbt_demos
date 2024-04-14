@@ -10,10 +10,14 @@
     {# 2. Selecting uniqueness columns allows us to identify failed rows #}
     {# We can add other columns as needed for a specific test. #}
     select 
-        {{ uniqueness_columns | join(', ') }} 
+        {{ uniqueness_columns | join(', ') }},
+        '{{ expression }}' as expression,
+        {{ expression }} as result 
+
     {# 3. Use a macro to automatically filter on dates #}
     from {{ get_date_filtered_test_subquery(model, get_run_at_date()) }}
     where not ({{ expression }})
+    
     {# 4. Add the configured where clause if one exists #}
     {% if where_clause %}
         and  ({{ where_clause }})
