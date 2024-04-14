@@ -5,18 +5,18 @@ models:
       meta:
         owner: Sales
         model_meta:
-          uniqueness:
+          uniqueness: # Used in tests to always return these columns
             - order_date
             - user_id
             - product_id
-          date_logic: run_at_week 
-          date_column: order_date
+          date_logic: run_at_week # Always loads one week's data
+          date_column: order_date # Defines the date column for the model
     tests: 
       - expression_is_true: 
           expression: total_weekly_items >= num_items
     columns:
       - name: order_date
-        description: ''
+        description: 'Order of the date'
         data_type: DATE
         tests:
           - not_null

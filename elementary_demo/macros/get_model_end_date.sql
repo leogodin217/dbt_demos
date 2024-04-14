@@ -1,12 +1,11 @@
 {% macro get_model_end_date(run_at_date, date_logic='execution_day') %}
 
 
-    {# This is like a Python import statement. Makes calling these functions shorter. #}
+    {# 1. Make our life easier by setting variables for the Python classes. #}
     {% set date = modules.datetime.date %}
     {% set timedelta = modules.datetime.timedelta %}
 
     {# Define any date logics used by your company  #}
-
     {% if date_logic == 'all' %}
         {% set end_date = None %}
 

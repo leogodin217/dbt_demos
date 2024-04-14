@@ -5,12 +5,12 @@ models:
       meta:
         owner: Sales
         model_meta:
-          uniqueness:
+          uniqueness: # Used to always return these columns in custom tests
             - date
             - user_id
             - product_id
-          date_logic: run_at_day 
-          date_column: date
+          date_logic: run_at_day # Always loads data for one day
+          date_column: date # Defines the date column
     description: Orders made by users
     columns:
       - name: date

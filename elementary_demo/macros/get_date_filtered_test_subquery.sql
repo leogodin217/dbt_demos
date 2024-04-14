@@ -1,4 +1,3 @@
-{# Uses meta config to generate a date-filtered subquery #}
 {% macro get_date_filtered_test_subquery(model, run_at_date) %}
 
     {% if not execute %} {{ return('') }} {% endif %}
@@ -13,7 +12,7 @@
     {% set test_full_table = var('test_full_table', false) %}
     {% set prevent_date_filter = test_full_table or date_logic == 'all' %}
 
-    {# 3. Get the start and end dates used to query the model model #}
+    {# 3. Get the start and end dates used to query the model #}
     {% if not prevent_date_filter %}
         {% set start_date = get_model_start_date(run_at_date, date_logic) %}
         {% set end_date = get_model_end_date(run_at_date, date_logic) %} 

@@ -1,14 +1,12 @@
-{# Gets the meta dict from the graph for a specific resource #}
 {% macro get_resource_meta(resource_name) %}
     {% if not execute %} {{ return('') }} {% endif %}
 
     {# Get the resource definition from the graph #}
-    {# Add other resources like metrics, macros, etc. if needed #}
     {% set resource_defs = graph.nodes.values() | list %} 
     {% set source_defs = graph.sources.values() | list %} 
     {% set all_defs = resource_defs + source_defs %}
 
-    {# Get the specific node definition. #}
+    {# Get the specific resource definition. #}
     {% set resource_node = resource_defs | selectattr('name', 'equalto', resource_name) | list %} 
     
     {% if not resource_node %}
